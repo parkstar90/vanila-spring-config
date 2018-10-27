@@ -8,8 +8,9 @@
         SELECT /* UserMapper.selectUserList */
           id,
           name,
-          address
-        FROM users
+          password,
+          mail
+        FROM tbl_member
         <if test="@org.apache.commons.lang.StringUtils@isNotEmpty(name)">
             AND users.name = #{name}
         </if>
