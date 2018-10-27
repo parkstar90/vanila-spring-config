@@ -38,16 +38,18 @@ public class DatabaseConfig {
     private DatabasePopulator createDatabasePopulator() {
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
         databasePopulator.setContinueOnError(true);
-        databasePopulator.addScript(new ClassPathResource("/common/sql/db-schema.sql"));
+//        databasePopulator.addScript(new ClassPathResource("/common/sql/db-schema.sql"));
         return databasePopulator;
     }
 
     private SimpleDriverDataSource createDataSource() {
         SimpleDriverDataSource simpleDriverDataSource = new SimpleDriverDataSource();
-        simpleDriverDataSource.setDriverClass(org.h2.Driver.class);
-        simpleDriverDataSource.setUrl("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MVCC=TRUE");
-        simpleDriverDataSource.setUsername("");
-        simpleDriverDataSource.setPassword("");
+        simpleDriverDataSource.setDriverClass(com.mysql.jdbc.Driver.class);
+//        simpleDriverDataSource.setUrl("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MVCC=TRUE");
+        simpleDriverDataSource.setUrl("jdbc:mysql://localhost:3306/xe?serverTimeZone=UTC&verifyServerCertificate=false&useSSL=false");
+        // jdbc:mysql://localhost:3306/xe?serverTimeZone=UTC&verifyServerCertificate=false&useSSL=false
+        simpleDriverDataSource.setUsername("root");
+        simpleDriverDataSource.setPassword("1234");
         return simpleDriverDataSource;
     }
 
